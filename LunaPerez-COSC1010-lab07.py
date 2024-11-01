@@ -1,12 +1,12 @@
-# Your Name Here
+# Luna Perez
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
-# Sources, people worked with, help given to: 
-# your
-# comments
-# here
+# 10/31/2024
+# Lab 07
+# Lab Section: 13
+# Sources, people worked with, help given to:  https://stackoverflow.com/questions/35467303/write-factorial-with-while-loop-python for help on what/how to do a factorial 
+# https://www.w3schools.com/python/ref_string_split.asp for how to split strings, https://stackoverflow.com/questions/63760633/replace-expected-at-least-2-arguments-got-1-error for help with replace errors
+# Lecture 10 Powerpoint slides
+
 
 
 # Prompt the user for an upper bound 
@@ -16,8 +16,17 @@
     # To do so you can use the methods `.isdigit()` or `.isnumeric()`
     # If a user did not enter a number output a statement saying so
 # You will continue to prompt the user until a proper integer value is entered
-
+stored_number = input("Give me a  number and ill give you the factorial:  ")
+while stored_number.isnumeric() == False:
+    stored_number= input("that wasnt an integer please try again: ")
+else:
+    stored_number = int(stored_number)
+# I used the Internet to help come up with a python friendly formula for factorials.
+print(stored_number)
 factorial = 1
+while stored_number > 1:
+    factorial= factorial * stored_number
+    stored_number= stored_number - 1
 
 print(f"The result of the factorial based on the given bound is {factorial}")
 
@@ -36,9 +45,21 @@ print("*"*75)
     # I recommend checking out: https://www.w3schools.com/python/ref_string_replace.asp to figure out how one may remove a character from a string
 # All this together means you will have an intensive while loop that includes multiple if statements, likely with some nesting 
 # The sum should start at 0 
-
+prompt = "Give me Numbers and ill add them all together, type exit to leave: "
 num_sum = 0 
 
+while True:
+    num_storage = input(prompt)
+    if num_storage.lower() == "exit":
+        break
+    if num_storage[0] == "-":
+        num_storage = num_storage.replace('-','') 
+        num_sum -= int(num_storage)
+    elif num_storage.isdigit():
+        num_sum += int(num_storage)
+    else:
+        print("that is not an integer")
+   
 print(f"Your final sum is {num_sum}")
 
 print("*"*75)
@@ -59,4 +80,42 @@ print("*"*75)
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
 
+calc_prompt ="Give me a simple calculation and type exit to end: "
+calc_op = None
+operand1 = ""
+operand2 = ""
+calc_output = 0
+while True:
+    calc_input= input(calc_prompt)
+    if calc_input.lower() == "exit":
+        break
+# Go through a loop to strip the operator from the opends and give it a variable
+    for char in calc_input:
+        if char in ("+","/","-",'*','%'):
+            calc_op = char
+            operand1, operand2 = calc_input.split(calc_op)
+            break
+    operand1 = int(operand1)
+    operand2 = int(operand2)
+    #use the  Operator variable to "do" the calculations 
+    if calc_op == '+':
+        calc_output = operand1 +  operand2
+    elif calc_op == '/':
+        calc_output = operand1 / operand2
+    elif calc_op == '-':
+        calc_output = operand1 - operand2
+    elif calc_op == '*':
+        calc_output = operand1 * operand2
+    elif calc_op == '%':
+        calc_output = operand1 % operand2
+    else:
+        print('Invaild Operator.')
+    print("Output: ", calc_output)
+
+print("Thanks, goodbye")
+            
+                
+       
+            
+    
         
